@@ -31,6 +31,7 @@ export interface TourGuideProviderProps {
   children: React.ReactNode
   dismissOnPress?: boolean
   preventOutsideInteraction?: boolean
+  maskWrapperComponent?: React.ComponentType
 }
 
 export const TourGuideProvider = ({
@@ -48,6 +49,7 @@ export const TourGuideProvider = ({
   startAtMount = false,
   dismissOnPress = false,
   preventOutsideInteraction = false,
+  maskWrapperComponent,
 }: TourGuideProviderProps) => {
   const [tourKey, setTourKey] = useState<string | '_default'>('_default')
   const [visible, updateVisible] = useState<Ctx<boolean | undefined>>({
@@ -269,6 +271,7 @@ export const TourGuideProvider = ({
             borderRadius,
             dismissOnPress,
             preventOutsideInteraction,
+            maskWrapperComponent,
           }}
         />
       </TourGuideContext.Provider>

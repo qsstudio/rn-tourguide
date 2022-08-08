@@ -38,6 +38,7 @@ export interface ModalProps {
   next: () => void
   prev: () => void
   preventOutsideInteraction?: boolean
+  maskWrapperComponent: React.ComponentType,
 }
 
 interface Layout {
@@ -76,6 +77,7 @@ export class Modal extends React.Component<ModalProps, State> {
     labels: {},
     isHorizontal: false,
     preventOutsideInteraction: false,
+    maskWrapperComponent: View as any,
   }
 
   layout?: Layout = {
@@ -274,6 +276,7 @@ export class Modal extends React.Component<ModalProps, State> {
       borderRadius={this.props.borderRadius}
       dismissOnPress={this.props.dismissOnPress}
       stop={this.props.stop}
+      maskWrapperComponent={this.props.maskWrapperComponent}
     />
   )
 

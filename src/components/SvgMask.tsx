@@ -28,6 +28,7 @@ interface Props {
   currentStep?: IStep
   easing: (value: number) => number
   stop: () => void
+  maskWrapperComponent?: React.ComponentType
 }
 
 interface State {
@@ -185,8 +186,8 @@ export class SvgMask extends Component<Props, State> {
     if (!this.state.canvasSize) {
       return null
     }
-    const { dismissOnPress, stop } = this.props
-    const Wrapper: any = dismissOnPress ? TouchableWithoutFeedback : View
+    const { dismissOnPress, stop, maskWrapperComponent: MaskWrapperComponent } = this.props
+    const Wrapper: any = MaskWrapperComponent ?? (dismissOnPress ? TouchableWithoutFeedback : View)
 
     return (
       <Wrapper
